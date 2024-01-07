@@ -1019,4 +1019,13 @@ strong {
     font-size: 20px;
   }
 }
+.button_1{
+  height:35px;
+  background:#e8491d;
+  border:0;
+  padding-left: 20px;
+  padding-right:20px;
+  color:#ffffff;
+  border-radius: 100px;
+}
 
