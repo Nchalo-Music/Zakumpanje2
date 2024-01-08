@@ -350,11 +350,7 @@ strong {
 /*---------------------------------------
   SITE HEADER              
 -----------------------------------------*/
-.site-header {
-  background-color: var(--primary-color);
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
+
 
 
 /*---------------------------------------
@@ -365,7 +361,7 @@ strong {
   top: 0;
   right: 0;
   left: 0;
-  margin-top: 51px;
+  margin-top: 0px;
 }
 
 .sticky-wrapper.is-sticky .navbar {
@@ -827,6 +823,8 @@ strong {
   position: relative;
   overflow: hidden;
   padding-bottom: 30px;
+	text-align:center;
+	align-item:center;
 }
 
 .site-footer-top {
