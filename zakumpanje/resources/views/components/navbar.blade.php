@@ -1,14 +1,28 @@
-
-<nav class="navbar navbar-expand-lg">
+{{-- 
+<header class="site-header">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-                 <img src="zaKUMPANJE-WEB-LOGO~2.png"width="px"height="60" alt=""> 
+        <div class="row">
+            
+            <div class="col-lg-12 col-12 d-flex flex-wrap">
+                <p class="d-flex me-4 mb-0">
+                    <strong class="text-white"> Home</strong>
+                    ads can go here or notifications 
+                </p>
+            </div>
+
+        </div>
+    </div>
+</header> --}}
+<div id="sticky-wrapper" class="sticky-wrapper" style="height: 110px;">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="">
+        <img src="{{ asset('images/logo.png')}}" width="150px" height="100" alt="{{ config('app.name','Zakumpanje') }}"> 
         </a>
 
-         <a href="Search.html">
+        <a href="Search.html">
             <button class="button_1" type="submit">Search</button>
-         </a>
-       
+        </a>
+    
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,10 +37,11 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="New releases.html">New Releases</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="Hot Songs.html">Hot Songs</a>
                 </li>
-    
+
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="Hot artist.html">Hot Artists</a>
                 </li>
@@ -40,5 +55,6 @@
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
+
