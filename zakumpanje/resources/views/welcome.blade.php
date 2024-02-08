@@ -16,7 +16,7 @@
             @extends('layouts.landing')
             @section('content')
             {{-- hero-section 1 --}}
-                @include('components.landing.hero-section-1')
+                {{-- @include('components.landing.hero-section-1') --}}
             {{-- / --}}
 
              {{-- hero-section 1 --}}

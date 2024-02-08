@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Artist;
 
 class TrackResource extends Resource
 {
@@ -22,19 +23,102 @@ class TrackResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            // ->schema([
+            //     Forms\Components\TextInput::make('name')
+            //         ->required()
+            //         ->maxLength(255),
+            //     Forms\Components\FileUpload::make('track')
+            //         ->required()
+            //         ->directory('tracks'),
+            //     Forms\Components\FileUpload::make('artwork')
+            //         ->required()
+            //         ->avatar()
+            //         ->directory('tracks/artworks'),
+            //     Forms\Components\DatePicker::make('year')
+            //         ->required(),
+            //     Forms\Components\TextInput::make('duration')
+            //         ->required(),
+            //     Forms\Components\Select::make('artist_id')
+            //         ->required()
+            //         ->relationship('artist','id')
+            //         ->createOptionForm([
+            //             Forms\Components\TextInput::make('name'),
+            //             Forms\Components\TextInput::make('stage_name')
+            //                 ->required(),
+            //             Forms\Components\FileUpload::make('avatar')
+            //                 ->avatar(),
+            //         ]),
+
+            // ]);
             ->schema([
-                Forms\Components\TextInput::make('track')
-                    ->required()
-                    ->maxLength(255),
-            ]);
+                Forms\Components\Section::make()
+                 ->description('Song Details')
+                 ->schema([
+                         Forms\Components\TextInput::make('name')
+                             ->required()
+                             ->maxLength(255),
+                         Forms\Components\TextInput::make('duration')
+                            ->numeric()
+                            ->required(),
+                         Forms\Components\DatePicker::make('year')
+                             ->label('year of release')
+                             ->required(),
+                         Forms\Components\Card::make()
+                             ->schema([
+                                Forms\Components\TextInput::make('genre')
+                                ->maxLength(255)
+                                ->required(),
+                                Forms\Components\Select::make('artist_id')
+                                    ->required()
+                                    ->preload()
+                                    ->options(fn( Artist $artist) => $artist->pluck('stage_name','id'))
+                                    ->createOptionForm([
+                                        Forms\Components\TextInput::make('name'),
+                                        Forms\Components\TextInput::make('stage_name')
+                                            ->required(),
+                                        Forms\Components\FileUpload::make('avatar')
+                                            ->avatar(),
+                                    ]),
+                                ])->columns(2)->columnSpanFull(),            
+                         ])->columns(3),
+              Forms\Components\Section::make()
+                         ->label('Attachments')
+                         ->icon('heroicon-o-arrow-up')
+                         ->description('Attach Files')
+                         ->schema([
+                            Forms\Components\FileUpload::make('artwork')
+                            ->required()
+                            ->avatar()
+                            ->directory('tracks/artworks'),
+
+                             Forms\Components\FileUpload::make('track')
+                                 ->required()
+                                 ->directory('tracks'),
+                        
+                         ])->columns(2)
+               
+              
+                 
+                     
+             ]);
+
+
+
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('track')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('artwork')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('year')
+                    ->searchable(),
+                Tables\Columns\textcolumn::make('genre'),                                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -61,7 +145,7 @@ class TrackResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ArtistRelationManager::class,
         ];
     }
 

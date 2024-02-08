@@ -37,6 +37,13 @@ class Trackcontroller extends Controller
 
             $validated = $request->validate([
                 'track' => 'required',
+                'name' => 'required',
+                'artwork' => 'required',
+                'genre' => 'required',
+                'artist_id' => 'required',
+                'year' => 'required',
+                'duration' => 'required'
+
             ]);
             
             if($validated){

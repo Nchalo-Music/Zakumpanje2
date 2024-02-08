@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TrackController;
@@ -17,9 +18,8 @@ use App\Http\Controllers\TrackController;
 
 // Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GuestController::class,'welcome']);
+   
 
 Route::get('/dashboard', function () {
     return view('dashboard');

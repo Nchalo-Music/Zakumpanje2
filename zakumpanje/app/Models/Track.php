@@ -27,7 +27,7 @@ class Track extends Model implements HasMedia
 
     public function artist(): BelongsTo
     {
-        $this->belongsTo(Artists::class);
+        return $this->belongsTo(Artist::class);
     }
 
 }
