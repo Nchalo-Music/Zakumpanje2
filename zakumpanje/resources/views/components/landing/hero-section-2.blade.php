@@ -15,7 +15,7 @@
                                     <img src="{{ asset('storage/'.$track->artwork) }}" alt="{{ $track->name }}" class="img-fluid w-md-50 h-md-50"  />
                                 {{-- </a>	 --}}
                                 <figcaption class="">
-                                    <a class="">{{ $track->name }}</a>
+                                    <a class="nav-link">{{ $track->name }}</a>
                                     <p class="">{{ $track->artist->stage_name }}</p>
                                 </figcaption>
                             </figure>

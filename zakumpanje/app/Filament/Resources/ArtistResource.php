@@ -31,7 +31,7 @@ class ArtistResource extends Resource
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('avatar')
                     ->directory('tracks/artists')
-                    ->maxLength(255),
+                   ,
             ]);
     }
 
